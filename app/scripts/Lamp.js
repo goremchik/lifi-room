@@ -14,7 +14,7 @@ export default class Lamp extends DraggbleItem {
         super(container, x, y, power, id);
 
         this.power = power;
-        this.id = id || parseInt(Math.random() * 1e9);
+
 
         this.element.addEventListener('click', (e) => { this.onClick(e); });
     }
@@ -34,12 +34,13 @@ export default class Lamp extends DraggbleItem {
              <div id="mainContent">
                 ${ this.createInput('id', this.id, true) }
                 ${ this.createInput('power', this.power) }
+                ${ this.createInput('X', this.x) }
+                ${ this.createInput('Y', this.y) }
             </div>
         `;
 
         modalSaveBtn.onclick = this.onSaveClick.bind(this);
     }
-
 
     getDataValue(name) {
         return modalBody.querySelector(`[data-name="${ name }"]`).value
@@ -48,12 +49,16 @@ export default class Lamp extends DraggbleItem {
     onSaveClick() {
         this.id = this.getDataValue('id');
         this.power = this.getDataValue('power');
+        this.x = this.getDataValue('X');
+        this.y = this.getDataValue('Y');
 
         console.log(this);
 
         $('#modal').modal('hide');
 
         this.element.childNodes[0].innerText = this.power;
+        this.element.style.top = this.y + 'px';
+        this.element.style.left = this.x + 'px';
     }
 
     createInput(name, value, disabled) {

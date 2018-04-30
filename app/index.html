@@ -20,7 +20,58 @@
     </form>
   </nav>
 
-  <div class="container drag-container" id="dragContainer" style="width: 1000px; height: 500px"></div>
+  <div class="container">
+  <div class="row">
+    <div class="input-group col-sm">
+      <div class="input-group-prepend">
+        <span class="input-group-text input-text-left">Room Height (m)</span>
+      </div>
+      <input type="text" id="heightRoomInput" class="form-control value-item" value="2">
+    </div>
+
+    <div class="input-group col-sm">
+      <div class="input-group-prepend">
+        <span class="input-group-text input-text-left">Room Width (m)</span>
+      </div>
+      <input type="text" id="widthRoomInput" class="form-control value-item" value="2">
+    </div>
+
+    <div class="input-group col-sm">
+      <div class="input-group-prepend">
+        <span class="input-group-text input-text-left">Room Length (m)</span>
+      </div>
+      <input type="text" id="lengthRoomInput" class="form-control value-item" value="4">
+    </div>
+  </div>
+
+    <div class="row">
+      <div class="input-group col-sm">
+        <div class="input-group-prepend">
+          <span class="input-group-text input-text-left">X</span>
+        </div>
+        <input type="text" id="xPoint" class="form-control value-item" value="" disabled>
+      </div>
+
+      <div class="input-group col-sm">
+        <div class="input-group-prepend">
+          <span class="input-group-text input-text-left">Y</span>
+        </div>
+        <input type="text" id="yPoint" class="form-control value-item" value="" disabled>
+      </div>
+
+      <div class="input-group col-sm">
+        <div class="input-group-prepend">
+          <span class="input-group-text input-text-left">Signal</span>
+        </div>
+        <input type="text" id="signalPoint" class="form-control value-item" value="" disabled>
+      </div>
+    </div>
+  </div>
+
+  <div class="container drag-container" id="dragContainer" style="width: 1000px; height: 500px; padding: 0">
+    <canvas id="draw" width="1000" height="500"></canvas>
+  </div>
+
 
   <div class="modal" tabindex="-1" role="dialog" id="modal">
     <div class="modal-dialog" role="document">

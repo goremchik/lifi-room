@@ -6,7 +6,7 @@ export default class DraggbleItem {
 
     constructor(container, x, y, power, id) {
         this.container = container;
-
+        this.id = id || parseInt(Math.random() * 1e9);
         this.element = this.createElement(power, id);
         this.setElementPosition(x, y);
 
@@ -19,6 +19,7 @@ export default class DraggbleItem {
         this.setElementPosition(e.clientX - offsetLeft, e.clientY - offsetTop);
     }
 
+
     setElementPosition(x, y) {
         this.element.style.left = x + 'px';
         this.element.style.top = y + 'px';
@@ -26,17 +27,18 @@ export default class DraggbleItem {
         this.y = y;
     }
 
-    createElement(power, id) {
+    createElement(power) {
         let el = document.createElement('div');
 
         el.className = 'draggable';
         el.setAttribute('draggable', 'true');
-        el.setAttribute('data-id', id);
+
 
         let lamp = document.createElement('div');
         lamp.className = 'lamp';
         lamp.style.textAlign = 'center';
         lamp.innerText = power;
+        lamp.setAttribute('data-id', this.id);
         el.appendChild(lamp);
 
         this.container.appendChild(el);
