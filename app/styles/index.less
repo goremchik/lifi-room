@@ -1,0 +1,74 @@
+@import "reset";
+
+.draggable {
+  position: absolute;
+  cursor: pointer;
+  min-height: 10px;
+  min-width: 10px;
+
+  z-index: 100;
+
+  top: 0;
+  left: 0;
+
+  transform: translate(-50%, -50%);
+}
+
+.lamp {
+  padding: 15px 0;
+  border-radius: 50%;
+  background-color: yellow;
+  width: 50px;
+  height: 50px;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+.input-group {
+  padding: 5px;
+}
+
+.input-text-left {
+  min-width: 150px;
+
+}
+
+.drag-container {
+  position: relative;
+  border: 1px solid #000;
+}
+
+
+#contextItems {
+  margin-top: 4px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 3px;
+  font-size: 17px;
+  color: #333333;
+  cursor: pointer;
+}
+
+#contextMenu {
+  display: none;
+  position: absolute;
+  border: 1px solid #B2B2B2;
+  width: 150px;
+  background: #fefefe;
+  box-shadow: 3px 3px 2px #DDD;
+  border-radius: 2px;
+  z-index: 1000;
+}
+
+li{
+  padding: 3px;
+  padding-left: 10px;
+}
+
+#contextItems :hover{
+  background: #eee;
+}
