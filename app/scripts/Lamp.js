@@ -1,6 +1,3 @@
-/**
- * Created by Andrii_Shoferivskyi on 2018-04-27.
- */
 
 import DraggbleItem from './DraggbleItem';
 
