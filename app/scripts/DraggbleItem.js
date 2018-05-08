@@ -4,12 +4,12 @@
 
 export default class DraggbleItem {
 
-    constructor(container, x, y, power, id) {
+    constructor(container, x, y, power, id, callback) {
         this.container = container;
         this.id = id || parseInt(Math.random() * 1e9);
         this.element = this.createElement(power, id);
         this.setElementPosition(x, y);
-
+        this.callback = callback;
         this.element.addEventListener('dragend', this.dragEnd.bind(this));
     }
 
@@ -17,8 +17,9 @@ export default class DraggbleItem {
         let el = e.target;
         let { offsetLeft, offsetTop } = this.container;
         this.setElementPosition(e.clientX - offsetLeft, e.clientY - offsetTop);
-    }
 
+        this.callback();
+    };
 
     setElementPosition(x, y) {
         this.element.style.left = x + 'px';

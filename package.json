@@ -28,7 +28,8 @@
   "scripts": {
     "prod": "webpack --mode production",
     "dev": "webpack --mode development",
-    "server": "webpack-dev-server"
+    "server": "webpack-dev-server",
+    "start": "npm run server"
   },
   "dependencies": {}
 }

@@ -27,7 +27,9 @@ let jsonLamps = localStorage.getItem('lamps');
 if (jsonLamps) {
     let oldLamps = JSON.parse(jsonLamps);
     if (oldLamps && Array.isArray(oldLamps) && oldLamps.length) {
-        lamps = oldLamps.map(el => new Lamp(container, el));
+        lamps = oldLamps.map(el => new Lamp(container, el, () => {
+            calculatePower(lamps, heightRoom, widthRoom, lengthRoom);
+        } ));
     }
 
     heightRoom = parseFloat(localStorage.getItem('heightRoom'));
@@ -41,7 +43,9 @@ if (jsonLamps) {
 
 if (!lamps) {
     lamps = [];
-    lamps.push(new Lamp(container, { x: 50, y: 50, power: defaultPower }));
+    lamps.push(new Lamp(container, { x: 50, y: 50, power: defaultPower }, () => {
+        calculatePower(lamps, heightRoom, widthRoom, lengthRoom);
+    }));
 }
 
 generateField(widthRoom, lengthRoom);
@@ -80,13 +84,14 @@ document.addEventListener("contextmenu", e => {
 document.addEventListener("click", () => {
     contextMenu.style.display = 'none';
     selectedEl = null;
-
 });
 
 addLampBtn.addEventListener("click", e => {
     let x = e.clientX, y = e.clientY;
     let { offsetLeft, offsetTop } = container;
-    lamps.push(new Lamp(container, { x: x - offsetLeft, y: y - offsetTop, power: defaultPower }));
+    lamps.push(new Lamp(container, { x: x - offsetLeft, y: y - offsetTop, power: defaultPower }, () => {
+        calculatePower(lamps, heightRoom, widthRoom, lengthRoom);
+    } ));
     calculatePower(lamps, heightRoom, widthRoom, lengthRoom);
 });
 
@@ -121,9 +126,9 @@ container.addEventListener('click', e => {
     e.preventDefault();
     if (e.target.id === 'draw') {
         let x = e.offsetX, y = e.offsetY;
-        let power = calculatePowerToPoint(lamps, x, y);
-        xPoint.value = x;
-        yPoint.value = y;
+        let power = calculatePowerToPoint(lamps, x, y, heightRoom);
+        xPoint.value = (x / e.target.width * widthRoomInput.value).toFixed(2);
+        yPoint.value = (y / e.target.height * lengthRoomInput.value).toFixed(2);
         signalPoint.value = power || '';
         return;
     }
@@ -133,3 +138,6 @@ container.addEventListener('click', e => {
     signalPoint.value = '';
 
 });
+
+
+

@@ -10,12 +10,10 @@ const modalDeleteBtn = document.getElementById('modalDeleteBtn');
 
 export default class Lamp extends DraggbleItem {
 
-    constructor(container, { x, y, power, id }) {
-        super(container, x, y, power, id);
+    constructor(container, { x, y, power, id }, callback) {
+        super(container, x, y, power, id, callback);
 
         this.power = power;
-
-
         this.element.addEventListener('click', (e) => { this.onClick(e); });
     }
 
@@ -51,9 +49,6 @@ export default class Lamp extends DraggbleItem {
         this.power = this.getDataValue('power');
         this.x = this.getDataValue('X');
         this.y = this.getDataValue('Y');
-
-        console.log(this);
-
         $('#modal').modal('hide');
 
         this.element.childNodes[0].innerText = this.power;
