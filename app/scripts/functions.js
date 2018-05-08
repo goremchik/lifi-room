@@ -78,7 +78,7 @@ function calculatePowerToPoint(lamps, x, y, height) {
 }
 
 function getLampIndexById(lamps, id) {
-    return lamps.findIndex(el => el.id === parseInt(id));
+    return lamps.findIndex(el => parseInt(el.id) === parseInt(id));
 }
 
 function hLos(h, d, power) {

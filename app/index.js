@@ -20,7 +20,7 @@ let lengthRoomInput = document.getElementById('lengthRoomInput');
 const contextMenu = document.getElementById('contextMenu');
 
 let lamps = null;
-let defaultPower = 100;
+let defaultPower = 3;
 let heightRoom = 2, widthRoom = 2, lengthRoom = 4; // m
 
 let jsonLamps = localStorage.getItem('lamps');
@@ -97,6 +97,7 @@ addLampBtn.addEventListener("click", e => {
 
 deleteLampBtn.addEventListener("click", () => {
     let index = getLampIndexById(lamps, parseInt(selectedEl.getAttribute('data-id')));
+    console.log(lamps, selectedEl.getAttribute('data-id'));
     lamps[index].element.remove();
     lamps.splice(index, 1);
     calculatePower(lamps, heightRoom, widthRoom, lengthRoom)

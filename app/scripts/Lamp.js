@@ -54,6 +54,7 @@ export default class Lamp extends DraggbleItem {
         this.element.childNodes[0].innerText = this.power;
         this.element.style.top = this.y + 'px';
         this.element.style.left = this.x + 'px';
+        this.callback();
     }
 
     createInput(name, value, disabled) {
