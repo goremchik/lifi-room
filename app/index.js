@@ -46,6 +46,11 @@ if (!lamps) {
     lamps.push(new Lamp(container, { x: 50, y: 50, power: defaultPower }, () => {
         calculatePower(lamps, heightRoom, widthRoom, lengthRoom);
     }));
+
+    localStorage.setItem('lamps', JSON.stringify(lamps));
+    localStorage.setItem('heightRoom', heightRoom.toString());
+    localStorage.setItem('widthRoom', widthRoom.toString());
+    localStorage.setItem('lengthRoom', lengthRoom.toString());
 }
 
 generateField(widthRoom, lengthRoom);
@@ -97,7 +102,6 @@ addLampBtn.addEventListener("click", e => {
 
 deleteLampBtn.addEventListener("click", () => {
     let index = getLampIndexById(lamps, parseInt(selectedEl.getAttribute('data-id')));
-    console.log(lamps, selectedEl.getAttribute('data-id'));
     lamps[index].element.remove();
     lamps.splice(index, 1);
     calculatePower(lamps, heightRoom, widthRoom, lengthRoom)

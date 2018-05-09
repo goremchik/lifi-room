@@ -45,6 +45,7 @@ function powerToColor(value) {
     var prev = states[i - 1];
     var next = states[i];
 
+
     var diffVal = next.value - prev.value;
     var diffR = next.r - prev.r;
     var diffG = next.g - prev.g;
@@ -75,6 +76,8 @@ function calculatePowerToPoint(lamps, x, y, height) {
     }
 
     return sum;
+
+
 }
 
 function getLampIndexById(lamps, id) {
